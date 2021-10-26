@@ -51,6 +51,7 @@ int main(){
 
    //unmap the shared data and unlink the shared memory
    munmap(table,sizeof(int));
+   close(myShm);
    shm_unlink("Memory");
    return 0;
 }

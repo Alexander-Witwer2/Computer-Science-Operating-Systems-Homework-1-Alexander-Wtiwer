@@ -1,9 +1,6 @@
 //Alexander Witwer Operating System Homework 1
 
 #include "external.h"
-#include <err.h>
-#include <errno.h>
-
 
 sem_t empty,full;
 int in = 0;
@@ -43,9 +40,7 @@ int main(){
   }
 
    for(int i = 0; i < MAXIMUM; i++){
-printf("HELP\n");
-     if( pthread_join(pt[i],NULL)!=0){perror("ERROR!!!!!\n");}
-	printf("HELP\n");
+     pthread_join(pt[i],NULL);
    }
 
    sem_destroy(&empty);
@@ -55,6 +50,5 @@ printf("HELP\n");
    munmap(table,sizeof(int));
    close(myShm);
    shm_unlink("Memory");
-   printf("Done\n");
    return 0;
 }
